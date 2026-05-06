@@ -1,0 +1,17 @@
+{
+  "name": "demo-sast",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test src/",
+    "lint": "elint src/"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  }
+}
