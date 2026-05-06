@@ -8,14 +8,14 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/hello/:name', (req, res) => {
-  res.json ({ message: 'Salut ${req.params.name}' });
+  res.json ({ message: `Salut ${req.params.name}` });
 });
 
-const PORT = process.env PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-if (required.main === module) {
+if (require.main === module) {
   app.listen(PORT, () => {
-    console.log('serv run port ${PORT}');
+    console.log(`serv run port ${PORT}`);
   });
 }
 
