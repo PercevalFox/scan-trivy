@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "node --test src/",
-    "lint": "elint src/"
+    "lint": "eslint src/"
   },
   "dependencies": {
     "express": "^4.19.2"
