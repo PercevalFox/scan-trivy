@@ -7,7 +7,7 @@ app.get('/health', (req, res) => {
   res.json({ status: "ok" });
 });
 
-app.get('/hello/:name', (req, res) = > {
+app.get('/hello/:name', (req, res) => {
   res.json ({ message: 'Salut ${req.params.name}' });
 });
 
