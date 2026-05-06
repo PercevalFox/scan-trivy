@@ -1,0 +1,37 @@
+name: Trivy Scan
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request: 
+    branches: [ main ]
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  trivy:
+    name: trivy fs scan
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run trivy scan
+        uses: aquasecurity/trivy-actions@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'HIGH, CRITICAL'
+          ignore-unfixed: true
+          scanners: 'vuln,secret,misconfig'
+      - name: Upload scan trivy
+        uses: github/codeql-actions/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
